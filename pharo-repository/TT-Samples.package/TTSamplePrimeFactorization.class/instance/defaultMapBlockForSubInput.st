@@ -1,11 +1,9 @@
 defaults
 defaultMapBlockForSubInput
-	^ [ :subInput | 
-		'[
-			(({1} to: {2}) select: [ :i | {3} % i = 0 ]) collect: [ :i | \{ i. {3} / i \} ].
-		]' format: {
-			(subInput at: 'min').
-			(subInput at: 'max').
-			(subInput at: 'number')
-		}
+	^ [ :subInput |
+		| min max number |
+		min := subInput at: 'min'.
+		max := subInput at: 'max'.
+		number := subInput at: 'number'.
+		((min to: max) select: [ :i | number % i = 0 ]) collect: [ :i | { i. number / i } ]
 	]

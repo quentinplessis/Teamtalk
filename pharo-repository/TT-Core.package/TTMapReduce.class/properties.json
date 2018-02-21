@@ -11,10 +11,10 @@
 		"reduceBlockWithCallback",
 		"mapBlockForSubInput",
 		"splitBlockForInput",
-		"resultsQueue",
 		"ttClient",
 		"host",
-		"port"
+		"port",
+		"ttClientClass"
 	],
 	"name" : "TTMapReduce",
 	"type" : "normal"

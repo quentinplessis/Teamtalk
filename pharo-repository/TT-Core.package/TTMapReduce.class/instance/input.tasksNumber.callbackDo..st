@@ -1,13 +1,16 @@
 actions
 input: input tasksNumber: tasksNumber callbackDo: callbackBlock
-	| tasks |
+	| tasks resultsQueue splitInputs |
 	
 	tasks := OrderedCollection new.
-	(self splitBlockForInput value: input value: tasksNumber) do: [ :subInput |
+	resultsQueue := SharedQueue new.
+	splitInputs := (self splitBlockForInput value: input value: tasksNumber).
+	splitInputs do: [ :subInput |
 		| task |
 		task := TTTask
-			executionCode: (self mapBlockForSubInput value: subInput)
-			resultProcessCode: (self processResultsCallbackBlock: callbackBlock tasksNumber: tasksNumber).
+			executionCode: self mapBlockForSubInput
+			resultProcessCode: (self processResultsIn: resultsQueue callbackBlock: callbackBlock tasksNumber: (splitInputs size))
+			input: subInput.
 		tasks add: task
 	].
 

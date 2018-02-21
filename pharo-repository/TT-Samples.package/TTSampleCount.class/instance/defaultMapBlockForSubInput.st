@@ -1,10 +1,8 @@
 defaults
 defaultMapBlockForSubInput
-	^ [ :subInput | 
-		'[
-			({1} to: {2}) inject: 0 into: [ :sum :i | sum + i ].
-		]' format: {
-			(subInput at: 'min').
-			(subInput at: 'max').
-		}
+	^ [ :subInput |
+		| min max |
+		min := subInput at: 'min'.
+		max := subInput at: 'max'.
+		(min to: max) inject: 0 into: [ :sum :i | sum + i ]
 	]

@@ -38,7 +38,7 @@ class TcpEventBusBridgeEchoServer extends AbstractVerticle {
             .addInboundPermitted(new PermittedOptions().setAddress("finished-tasks"))
             .addOutboundPermitted(new PermittedOptions().setAddress("finished-tasks")));
 
-    bridge.listen(7001, {res -> System.out.println("Ready: "+ bridge)});
+    bridge.listen(7002, {res -> System.out.println("Ready: "+ bridge)});
   }
 
   @Override

@@ -5,7 +5,7 @@
 		"commitTime:" : "QuentinPlessis 2/20/2018 12:28",
 		"commit" : "QuentinPlessis 2/21/2018 13:55",
 		"executionCode:" : "QuentinPlessis 2/19/2018 13:34",
-		"compileCodeString:" : "QuentinPlessis 2/19/2018 14:18",
+		"compileCodeString:" : "QuentinPessis 2/21/2018 17:16",
 		"isCommited" : "QuentinPlessis 2/20/2018 13:37",
 		"hasHighestWorker" : "QuentinPlessis 2/20/2018 13:16",
 		"commitTime" : "QuentinPlessis 2/20/2018 12:28",
@@ -17,6 +17,7 @@
 		"determineHighestVoter" : "QuentinPlessis 2/20/2018 16:40",
 		"compiledExecutionCodeString" : "QuentinPlessis 2/19/2018 13:40",
 		"initialize" : "QuentinPlessis 2/20/2018 16:31",
+		"input" : "QuentinPessis 2/21/2018 17:05",
 		"defaultExecutionCode" : "QuentinPlessis 2/19/2018 12:55",
 		"attributionTime:" : "QuentinPlessis 2/20/2018 13:23",
 		"highestVoter" : "QuentinPlessis 2/21/2018 13:58",
@@ -25,8 +26,9 @@
 		"addVote:workerCode:" : "QuentinPlessis 2/20/2018 12:40",
 		"resultProcessCode:" : "QuentinPlessis 2/20/2018 17:53",
 		"uuid:" : "QuentinPlessis 2/20/2018 11:59",
-		"execute" : "QuentinPlessis 2/20/2018 17:03",
+		"execute" : "QuentinPessis 2/21/2018 17:09",
 		"isAttributed" : "QuentinPlessis 2/20/2018 13:38",
+		"input:" : "QuentinPessis 2/21/2018 17:05",
 		"votes:" : "QuentinPlessis 2/21/2018 13:49",
 		"isProcessed" : "QuentinPlessis 2/20/2018 13:38",
 		"uuid" : "QuentinPlessis 2/20/2018 11:58",
@@ -41,10 +43,10 @@
 		"hasWorkerAttributionPeriodExpiredLimit:" : "QuentinPlessis 2/20/2018 13:58"
 	},
 	"class" : {
-		"executionCodeString:" : "QuentinPlessis 2/20/2018 13:53",
 		"executionCode:" : "QuentinPlessis 2/20/2018 13:53",
+		"executionCode:input:" : "QuentinPessis 2/21/2018 17:07",
 		"new" : "QuentinPlessis 2/20/2018 13:53",
-		"executionCode:resultProcessCode:" : "QuentinPlessis 2/20/2018 17:10",
-		"executionCodeString:resultProcessCode:" : "QuentinPlessis 2/20/2018 17:11"
+		"executionCode:resultProcessCode:input:" : "QuentinPessis 2/21/2018 17:07",
+		"executionCode:resultProcessCode:" : "QuentinPlessis 2/20/2018 17:10"
 	}
 }
