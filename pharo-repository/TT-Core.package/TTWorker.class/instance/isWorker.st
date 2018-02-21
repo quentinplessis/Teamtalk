@@ -1,0 +1,3 @@
+private-role
+isWorker
+	^ true

@@ -1,0 +1,3 @@
+defaults
+defaultOpenTasksAddress
+	^ 'open-tasks'

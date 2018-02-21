@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TTAbstractClient",
+	"category" : "TT-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "TTProducer",
+	"type" : "normal"
+}

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TTMapReduce",
+	"category" : "TT-Samples",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "TTSampleCount",
+	"type" : "normal"
+}

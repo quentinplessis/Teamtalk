@@ -1,0 +1,3 @@
+private-role
+isProducer
+	^ true

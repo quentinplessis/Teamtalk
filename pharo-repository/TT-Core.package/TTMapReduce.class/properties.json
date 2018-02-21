@@ -1,0 +1,21 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "TT-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"executionCodeForSubInput",
+		"mapBlockForInput",
+		"reduceBlockWithCallback",
+		"mapBlockForSubInput",
+		"splitBlockForInput",
+		"resultsQueue",
+		"ttClient",
+		"host",
+		"port"
+	],
+	"name" : "TTMapReduce",
+	"type" : "normal"
+}

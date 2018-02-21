@@ -1,0 +1,3 @@
+defaults
+defaultTTClientClass
+	^ TTProducer

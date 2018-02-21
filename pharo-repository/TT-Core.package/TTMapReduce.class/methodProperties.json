@@ -1,0 +1,26 @@
+{
+	"instance" : {
+		"splitBlockForInput:" : "QuentinPlessis 2/21/2018 12:50",
+		"input:tasksNumber:callbackDo:" : "QuentinPlessis 2/21/2018 13:08",
+		"defaultMapBlockForSubInput" : "QuentinPlessis 2/21/2018 12:59",
+		"defaultHost" : "QuentinPlessis 2/21/2018 13:37",
+		"defaultPort" : "QuentinPlessis 2/21/2018 13:38",
+		"defaultSplitBlockForInput" : "QuentinPlessis 2/21/2018 12:57",
+		"mapBlockForSubInput" : "QuentinPlessis 2/21/2018 12:49",
+		"ttClient" : "QuentinPlessis 2/21/2018 13:36",
+		"createTTClient" : "QuentinPlessis 2/21/2018 13:37",
+		"host" : "QuentinPlessis 2/21/2018 13:37",
+		"port" : "QuentinPlessis 2/21/2018 13:37",
+		"reduceBlockWithCallback:" : "QuentinPlessis 2/20/2018 18:29",
+		"defaultReduceBlockWithCallback" : "QuentinPlessis 2/21/2018 13:14",
+		"mapBlockForSubInput:" : "QuentinPlessis 2/21/2018 12:50",
+		"processResultsCallbackBlock:tasksNumber:" : "QuentinPlessis 2/21/2018 13:21",
+		"resultsQueue" : "QuentinPlessis 2/21/2018 12:53",
+		"reduceBlockWithCallback" : "QuentinPlessis 2/20/2018 18:34",
+		"defaultTTClientClass" : "QuentinPlessis 2/21/2018 13:26",
+		"splitBlockForInput" : "QuentinPlessis 2/21/2018 12:50"
+	},
+	"class" : {
+		"splitBlockForInput:mapBlockForSubInput:reduceBlockWithCallback:" : "QuentinPlessis 2/21/2018 13:39"
+	}
+}

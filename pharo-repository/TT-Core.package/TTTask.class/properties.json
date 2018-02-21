@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Dictionary",
+	"category" : "TT-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"executionCode",
+		"votes",
+		"commitTime",
+		"attributionTime",
+		"resultProcessCode"
+	],
+	"name" : "TTTask",
+	"type" : "normal"
+}

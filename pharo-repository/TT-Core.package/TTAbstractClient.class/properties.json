@@ -1,0 +1,21 @@
+{
+	"commentStamp" : "",
+	"super" : "TTObject",
+	"category" : "TT-Core",
+	"classinstvars" : [
+		"default"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"eventBus",
+		"tasks",
+		"taskManagementProcess",
+		"shouldLoopManageTasks",
+		"tasksManagementInterval",
+		"tasksManagementProcess",
+		"uuid"
+	],
+	"name" : "TTAbstractClient",
+	"type" : "normal"
+}
