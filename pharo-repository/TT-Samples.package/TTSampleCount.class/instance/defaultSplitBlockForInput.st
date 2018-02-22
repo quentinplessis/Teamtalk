@@ -1,15 +1,10 @@
 defaults
 defaultSplitBlockForInput
 	^ [ :number :tasksNumber |
-		| delta |
-	
-		delta := ((number + 1) / tasksNumber) ceiling.
-		delta = 0 ifTrue: [ delta := 1 ].
-	
-		(1 to: number by: delta) collect: [ :i |
+		self from: 1 to: number splitInto: tasksNumber collect: [ :min :max |
 			{ 
-				'min' -> i.
-				'max' -> ((i+delta-1) min: number)
+				'min' -> min.
+				'max' -> max
 			} asDictionary.
 		]
 	]

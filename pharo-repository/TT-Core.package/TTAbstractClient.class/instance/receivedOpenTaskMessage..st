@@ -2,7 +2,7 @@ private-tasks
 receivedOpenTaskMessage: msg
 	self extractTaskMessage: msg body do: [ :producerCode :receivedTasks |
 		| votes |
-		votes := receivedTasks collect: [ :task |
+		votes := receivedTasks shuffle collect: [ :task |
 			| vote |
 			vote := self generateVoteForTask: task.
 			self addConsideredTask: task.

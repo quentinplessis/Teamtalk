@@ -1,17 +1,10 @@
 defaults
 defaultSplitBlockForInput
 	^ [ :number :tasksNumber |
-		| min max delta |
-	
-		min := 2.
-		max := number sqrt floor.
-		delta := ((max-min) / tasksNumber) ceiling.
-		delta = 0 ifTrue: [ delta := 1 ].
-	
-		(min to: (max-1) by: delta) collect: [ :i |
+		self from: 2 to: (number sqrt floor) splitInto: tasksNumber collect: [ :min :max |
 			{
-				'min' -> i. 
-				'max' -> (i+delta).
+				'min' -> min. 
+				'max' -> max.
 				'number' -> number
 			} asDictionary
 		]

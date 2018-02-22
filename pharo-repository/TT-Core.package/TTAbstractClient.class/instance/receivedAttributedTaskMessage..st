@@ -9,6 +9,7 @@ receivedAttributedTaskMessage: msg
 			attributedToSelf
 		].
 		Transcript logCr: ('Received attributed tasks {1}' format: { ', ' join: attributedTasks }).
+		self addAttributedTasks: attributedTasks.
 		attributedTasks do: [ :task |
 			| newTask |
 			newTask := TTTask new.
@@ -22,5 +23,6 @@ receivedAttributedTaskMessage: msg
 				'workerCode' -> (self uuid).
 				'tasks' -> { newTask }.
 			} to: (self defaultFinishedTasksAddress)
-		]. 
+		].
+		self removeAttributedTasks: attributedTasks.
 	].

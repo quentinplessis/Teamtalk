@@ -15,7 +15,8 @@
 		"tasksManagementInterval",
 		"tasksManagementProcess",
 		"uuid",
-		"consideredTasks"
+		"consideredTasks",
+		"currentlyAttributedTasks"
 	],
 	"name" : "TTAbstractClient",
 	"type" : "normal"
