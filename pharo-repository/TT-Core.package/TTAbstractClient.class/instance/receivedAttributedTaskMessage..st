@@ -3,7 +3,10 @@ receivedAttributedTaskMessage: msg
 	self extractTaskMessage: msg body do: [ :producerCode :receivedTasks |
 		| attributedTasks |
 		attributedTasks := receivedTasks select: [ :task |
-			(task at: 'highestVoter' ifAbsent: [ ]) = self uuid
+			| attributedToSelf |
+			attributedToSelf := (task at: 'highestVoter' ifAbsent: [ ]) = self uuid.
+			attributedToSelf ifFalse: [ self removeConsideredTask: task ].
+			attributedToSelf
 		].
 		Transcript logCr: ('Received attributed tasks {1}' format: { ', ' join: attributedTasks }).
 		attributedTasks do: [ :task |

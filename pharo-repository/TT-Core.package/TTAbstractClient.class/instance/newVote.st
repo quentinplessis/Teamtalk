@@ -1,3 +1,3 @@
 private-tasks
 newVote
-	^ 100 atRandom
+	^ ((Random new next) / (1 + self consideredTasks size)) asFloat

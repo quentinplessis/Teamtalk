@@ -3,7 +3,10 @@ receivedOpenTaskMessage: msg
 	self extractTaskMessage: msg body do: [ :producerCode :receivedTasks |
 		| votes |
 		votes := receivedTasks collect: [ :task |
-			self generateVoteForTask: task.
+			| vote |
+			vote := self generateVoteForTask: task.
+			self addConsideredTask: task.
+			vote
 		].
 		Transcript logCr: ('Send votes {1}' format: { ', ' join: votes }).
 		self eventBus publish: {

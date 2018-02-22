@@ -1,3 +1,3 @@
 defaults
 defaultTasksManagementInterval
-	^ 1 seconds
+	^ 500 milliSeconds

@@ -14,7 +14,8 @@
 		"shouldLoopManageTasks",
 		"tasksManagementInterval",
 		"tasksManagementProcess",
-		"uuid"
+		"uuid",
+		"consideredTasks"
 	],
 	"name" : "TTAbstractClient",
 	"type" : "normal"
