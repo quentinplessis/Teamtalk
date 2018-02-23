@@ -1,0 +1,3 @@
+private-tasks-producer
+resetReceivedSuppliedSlotsQueue
+	receivedSuppliedSlotsQueue := nil

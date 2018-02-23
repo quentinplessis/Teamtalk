@@ -1,3 +1,0 @@
-constants
-attributed
-	^ 2

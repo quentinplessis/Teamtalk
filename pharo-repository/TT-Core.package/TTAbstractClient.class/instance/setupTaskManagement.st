@@ -1,11 +1,12 @@
-private-tasks
+private-processes
 setupTaskManagement
 	self isWorker ifTrue: [
-		self eventBus subscribe: (self defaultOpenTasksAddress) callback: [ :msg | self receivedOpenTaskMessage: msg ].
-		self eventBus subscribe: (self defaultAttributedTasksAddress) callback: [ :msg | self receivedAttributedTaskMessage: msg ].
+		self eventBus subscribe: (self defaultSlotDemandAddress) callback: [ :msg | self receivedSlotDemandMessage: msg ].
+		self eventBus subscribe: (self defaultTaskAttributionAddress) callback: [ :msg | self receivedTaskAttributionMessage: msg ].
+		self startConsumerTaskManagementProcess.
 	].
 	self isProducer ifTrue: [
-		self eventBus subscribe: (self defaultVotesAddress) callback: [ :msg | self receivedVoteMessage: msg ].
-		self eventBus subscribe: (self defaultFinishedTasksAddress) callback: [ :msg | self receivedFinishedTaskMessage: msg ].
+		self eventBus subscribe: (self defaultSlotSupplyAddress) callback: [ :msg | self receivedSlotSupplyMessage: msg ].
+		self eventBus subscribe: (self defaultExecutedTasksAddress) callback: [ :msg | self receivedExecutedTaskMessage: msg ].
+		self startProducerTaskManagementProcess.
 	].
-	self startTaskManagementProcess.

@@ -1,3 +1,0 @@
-defaults
-defaultAttributedTasksAddress
-	^ 'attributed-tasks'

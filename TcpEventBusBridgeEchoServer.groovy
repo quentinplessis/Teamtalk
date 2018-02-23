@@ -12,33 +12,19 @@ class TcpEventBusBridgeEchoServer extends AbstractVerticle {
   void start() throws Exception {
     println "starting"
 
-    vertx.eventBus().consumer("hello", {msg -> 
-      msg.reply(new JsonObject().put("value", "Hello " + msg.body().getString("value")));
-    });
-
-    vertx.eventBus().consumer("echo", {msg -> 
-        System.out.println("got: "+ msg.body());
-        msg.reply(msg.body());
-    });
-
     TcpEventBusBridge bridge = TcpEventBusBridge.create(
         vertx,
         new BridgeOptions()
-            .addInboundPermitted(new PermittedOptions().setAddress("hello"))
-            .addInboundPermitted(new PermittedOptions().setAddress("echo"))
-            .addOutboundPermitted(new PermittedOptions().setAddress("echo"))
-            .addInboundPermitted(new PermittedOptions().setAddress("tasks"))
-            .addOutboundPermitted(new PermittedOptions().setAddress("tasks"))
-            .addInboundPermitted(new PermittedOptions().setAddress("open-tasks"))
-            .addOutboundPermitted(new PermittedOptions().setAddress("open-tasks"))
-            .addInboundPermitted(new PermittedOptions().setAddress("votes"))
-            .addOutboundPermitted(new PermittedOptions().setAddress("votes"))
-            .addInboundPermitted(new PermittedOptions().setAddress("attributed-tasks"))
-            .addOutboundPermitted(new PermittedOptions().setAddress("attributed-tasks"))
-            .addInboundPermitted(new PermittedOptions().setAddress("finished-tasks"))
-            .addOutboundPermitted(new PermittedOptions().setAddress("finished-tasks")));
+            .addInboundPermitted(new PermittedOptions().setAddress("slot-demand"))
+            .addOutboundPermitted(new PermittedOptions().setAddress("slot-demand"))
+            .addInboundPermitted(new PermittedOptions().setAddress("slot-supply"))
+            .addOutboundPermitted(new PermittedOptions().setAddress("slot-supply"))
+            .addInboundPermitted(new PermittedOptions().setAddress("task-attribution"))
+            .addOutboundPermitted(new PermittedOptions().setAddress("task-attribution"))
+            .addInboundPermitted(new PermittedOptions().setAddress("executed-tasks"))
+            .addOutboundPermitted(new PermittedOptions().setAddress("executed-tasks")));
 
-    bridge.listen(7002, {res -> System.out.println("Ready: "+ bridge)});
+    bridge.listen(7005, {res -> System.out.println("Ready: "+ bridge)});
   }
 
   @Override

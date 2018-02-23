@@ -1,0 +1,22 @@
+{
+	"instance" : {
+		"uuid" : "QuentinPessis 2/23/2018 17:03",
+		"producerCode" : "QuentinPessis 2/23/2018 19:07",
+		"description" : "QuentinPessis 2/23/2018 17:52",
+		"tasks:" : "QuentinPessis 2/23/2018 17:01",
+		"isExpired" : "QuentinPessis 2/23/2018 19:04",
+		"uuid:" : "QuentinPessis 2/23/2018 17:04",
+		"workerCode:" : "QuentinPessis 2/23/2018 17:51",
+		"initialize" : "QuentinPessis 2/23/2018 17:03",
+		"expirationDate:" : "QuentinPessis 2/23/2018 17:38",
+		"tasks" : "QuentinPessis 2/23/2018 17:00",
+		"workerCode" : "QuentinPessis 2/23/2018 17:51",
+		"expirationDate" : "QuentinPessis 2/23/2018 17:38",
+		"producerCode:" : "QuentinPessis 2/23/2018 19:08"
+	},
+	"class" : {
+		"new" : "QuentinPessis 2/23/2018 17:02",
+		"producerCode:tasks:" : "QuentinPessis 2/23/2018 19:11",
+		"from:" : "QuentinPessis 2/23/2018 19:10"
+	}
+}

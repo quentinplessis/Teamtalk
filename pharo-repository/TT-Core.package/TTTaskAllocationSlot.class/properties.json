@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "Dictionary",
+	"category" : "TT-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "TTTaskAllocationSlot",
+	"type" : "normal"
+}

@@ -1,7 +1,11 @@
-private
+private-processes
 releaseProcesses
 	self shouldLoopManageTasks: false.
-	tasksManagementProcess ifNotNil: [
-		tasksManagementProcess terminate.
-		tasksManagementProcess := nil
+	producerTaskManagementProcess ifNotNil: [
+		producerTaskManagementProcess terminate.
+		producerTaskManagementProcess := nil
+	].
+	consumerTaskManagementProcess ifNotNil: [
+		consumerTaskManagementProcess terminate.
+		consumerTaskManagementProcess := nil
 	].

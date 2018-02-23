@@ -9,14 +9,17 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"eventBus",
-		"tasks",
-		"taskManagementProcess",
 		"shouldLoopManageTasks",
 		"tasksManagementInterval",
-		"tasksManagementProcess",
 		"uuid",
-		"consideredTasks",
-		"currentlyAttributedTasks"
+		"tasksQueue",
+		"producerTaskManagementProcess",
+		"consumerTaskManagementProcess",
+		"attributionPeriod",
+		"tasksToExecute",
+		"receivedDemandedSlotsQueue",
+		"receivedSuppliedSlotsQueue",
+		"allTasks"
 	],
 	"name" : "TTAbstractClient",
 	"type" : "normal"

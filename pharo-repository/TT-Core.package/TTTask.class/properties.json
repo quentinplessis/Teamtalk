@@ -7,9 +7,6 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"executionCode",
-		"votes",
-		"commitTime",
-		"attributionTime",
 		"resultProcessCode"
 	],
 	"name" : "TTTask",

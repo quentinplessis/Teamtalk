@@ -1,3 +1,0 @@
-constants
-created
-	^ 0

@@ -1,0 +1,3 @@
+defaults
+defaultSlotSupplyAddress
+	^ 'slot-supply'

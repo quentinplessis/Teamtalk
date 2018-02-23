@@ -1,3 +1,0 @@
-constants
-commited
-	^ 1
