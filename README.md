@@ -1,7 +1,9 @@
 # Teamtalk
 
-Simple library to execute Smalltalk code in a cluster of Pharo Smalltalk instances.
+Simple library to execute Pharo Smalltalk code in a cluster of Pharo Smalltalk instances.
 MapReduce is also supported.
+
+Based on [Vert.x](http://vertx.io/) using the [VerStix](https://github.com/mumez/VerStix) library.
 
 ## Installation
 
@@ -9,19 +11,19 @@ MapReduce is also supported.
 Setup Vert.x verticle.
 
 ```
-$ vertx run TcpEventBusBridgeEchoServer.groovy
+$ docker run -p 8080:8080 plequen/teamtalk-server
 ```
 
 *[Image A]* Create a producer
 
 ```smalltalk
-producer := TTProducer host: 'localhost' port: 7000.
+producer := TTProducer host: 'localhost' port: 8080.
 ```
 
 *[Image B]* Create a worker
 
 ```smalltalk
-worker := TTWorker host: 'localhost' port: 7000.
+worker := TTWorker host: 'localhost' port: 8080.
 ```
 
 *[Image A]* Add a task to execute
