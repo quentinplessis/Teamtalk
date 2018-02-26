@@ -30,7 +30,7 @@ worker := TTWorker host: 'localhost' port: 8080.
 
 ```smalltalk
 task := TTTask	executionCode: [
-		"Image B
+		"Image B"
 		'Do some work' inspect.
 		2 + 2	]	resultProcessCode: [ :result |
 		"Image A"		result inspect. "4"	].producer addTask: task.
