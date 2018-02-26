@@ -12,7 +12,7 @@ attributeTasksToWorkers: recruitedWorkers
 				| taskToAttribute |
 				taskToAttribute := TTTask from: taskDictionary.
 				self attributeTask: taskToAttribute to: worker.
-				attributedTasks add: taskToAttribute.
+				attributedTasks add: taskToAttribute uuid.
 				usedWorkers add: worker.
 			]
 		].
