@@ -21,6 +21,7 @@ script:
   # Build Pharo 5.0 docker images
   - export IMAGE_REPOSITORY=${DOCKER_USERNAME}/teamtalk-server
   - docker build -t ${IMAGE_REPOSITORY}:${TRAVIS_TAG} .
+  - docker tag ${IMAGE_REPOSITORY}:${TRAVIS_TAG} ${IMAGE_REPOSITORY}:latest
   - docker tag ${IMAGE_REPOSITORY}:${TRAVIS_TAG} ${IMAGE_REPOSITORY}:${BRANCH}
   - docker tag ${IMAGE_REPOSITORY}:${TRAVIS_TAG} ${IMAGE_REPOSITORY}:${COMMIT}
   - docker push ${IMAGE_REPOSITORY}
