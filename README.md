@@ -121,26 +121,24 @@ producer shutdown.
 ```smalltalk
 producer := TTProducer host: 'localhost' port: 8080.
 
-[
-	start := DateAndTime now.
-	number := 4.
-	i := 0.
-	number timesRepeat: [
-  		task := TTTask
-			executionCode: [
-			  	10 seconds wait.
-				'OK' inspect.
-				'OK'
-	  		]
-	  		resultProcessCode: [ :result |
-				i := i + 1.
-				i = number ifTrue: [ 
-					(DateAndTime now asUnixTime - start asUnixTime) inspect
-				].
-	  		].
-  		producer addTask: task.
-	].
-] fork.
+start := DateAndTime now.
+number := 4.
+i := 0.
+number timesRepeat: [
+	task := TTTask
+		executionCode: [
+			10 seconds wait.
+			'OK' inspect.
+			'OK'
+	  	]
+	  	resultProcessCode: [ :result |
+			i := i + 1.
+			i = number ifTrue: [ 
+				(DateAndTime now asUnixTime - start asUnixTime) inspect
+			].
+	  	].
+  	producer addTask: task.
+].
 
 "To remove producer from cluster"
 producer shutdown.
