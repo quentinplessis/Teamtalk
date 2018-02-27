@@ -8,6 +8,9 @@ Based on [Vert.x](http://vertx.io/) using the [VerStix](https://github.com/mumez
 ## Installation
 
 ## Get Started
+
+### Manual setup
+
 Setup Vert.x verticle.
 
 ```
@@ -29,11 +32,17 @@ worker := TTWorker host: 'localhost' port: 8080.
 *[Image A]* Add a task to execute
 
 ```smalltalk
-task := TTTask	executionCode: [
+task := TTTask
+	executionCode: [
 		"Image B"
 		'Do some work' inspect.
-		2 + 2	]	resultProcessCode: [ :result |
-		"Image A"		result inspect. "4"	].producer addTask: task.
+		2 + 2
+	]
+	resultProcessCode: [ :result |
+		"Image A"
+		result inspect. "4"
+	].
+producer addTask: task.
 ```
 
 
