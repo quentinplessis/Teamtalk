@@ -134,7 +134,7 @@ Sample results:
 ### Usage
 
 ```smalltalk
-mapReduce := (TTMapReduce	splitBlockForInput: [ ::input :tasksNumber | 		"split input into sub inputs here"	]	mapBlockForSubInput: [ ::subInput | 		"process sub inputs here"
+mapReduce := (TTMapReduce	splitBlockForInput: [ :input :tasksNumber | 		"split input into sub inputs here"	]	mapBlockForSubInput: [ :subInput | 		"process sub inputs here"
 		"map sub input to sub result"	]	reduceBlockWithCallback: [ :results :callback |		"reduce sub results here"		callback value: results	])	ttClientClass: TTProducer;
 	host: 'localhost'	port: 8080;	yourself.mapReduce	input: { }	tasksNumber: 4	callbackDo: [ :result | result inspect ].
 
