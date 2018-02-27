@@ -7,6 +7,13 @@ Based on [Vert.x](http://vertx.io/) using the [VerStix](https://github.com/mumez
 
 ## Installation
 
+```smalltalk
+Metacello new
+    baseline: 'Teamtalk';
+    repository: 'github://quentinplessis/Teamtalk/pharo-repository';
+    load.
+```
+
 ## Get Started
 
 ### Manual setup
