@@ -105,7 +105,11 @@ ruby spawner.rb --remove-all
 ### Simple tasks without callback
 
 ```smalltalk
-producer := TTProducer host: 'localhost' port: 8080.producer addTask: (TTTask executionCode: [ 1 inspect. 5 seconds wait. nil ]).producer addTask: (TTTask executionCode: [ 2 inspect. 5 seconds wait. nil ]).producer addTask: (TTTask executionCode: [ 3 inspect. 5 seconds wait. nil ]).
+producer := TTProducer host: 'localhost' port: 8080.
+
+producer addTask: (TTTask executionCode: [ 1 inspect. 5 seconds wait. nil ]).
+producer addTask: (TTTask executionCode: [ 2 inspect. 5 seconds wait. nil ]).
+producer addTask: (TTTask executionCode: [ 3 inspect. 5 seconds wait. nil ]).
 producer addTask: (TTTask executionCode: [ 4 inspect. 5 seconds wait. nil ]).
 
 "To remove producer from cluster"
@@ -117,7 +121,26 @@ producer shutdown.
 ```smalltalk
 producer := TTProducer host: 'localhost' port: 8080.
 
-[	start := DateAndTime now.	number := 4.	i := 0.	number timesRepeat: [  		task := TTTask			executionCode: [			  	10 seconds wait.				'OK' inspect.				'OK'	  		]	  		resultProcessCode: [ :result |				i := i + 1.				i = number ifTrue: [ 					(DateAndTime now asUnixTime - start asUnixTime) inspect				].	  		].  		producer addTask: task.	].] fork.
+[
+	start := DateAndTime now.
+	number := 4.
+	i := 0.
+	number timesRepeat: [
+  		task := TTTask
+			executionCode: [
+			  	10 seconds wait.
+				'OK' inspect.
+				'OK'
+	  		]
+	  		resultProcessCode: [ :result |
+				i := i + 1.
+				i = number ifTrue: [ 
+					(DateAndTime now asUnixTime - start asUnixTime) inspect
+				].
+	  		].
+  		producer addTask: task.
+	].
+] fork.
 
 "To remove producer from cluster"
 producer shutdown.
@@ -134,9 +157,27 @@ Sample results:
 ### Usage
 
 ```smalltalk
-mapReduce := (TTMapReduce	splitBlockForInput: [ :input :tasksNumber | 		"split input into sub inputs here"	]	mapBlockForSubInput: [ :subInput | 		"process sub inputs here"
-		"map sub input to sub result"	]	reduceBlockWithCallback: [ :results :callback |		"reduce sub results here"		callback value: results	])	ttClientClass: TTProducer;
-	host: 'localhost'	port: 8080;	yourself.mapReduce	input: { }	tasksNumber: 4	callbackDo: [ :result | result inspect ].
+mapReduce := (TTMapReduce
+	splitBlockForInput: [ :input :tasksNumber | 
+		"split input into sub inputs here"
+	]
+	mapBlockForSubInput: [ :subInput | 
+		"process sub inputs here"
+		"map sub input to sub result"
+	]
+	reduceBlockWithCallback: [ :results :callback |
+		"reduce sub results here"
+		callback value: results
+	])
+	ttClientClass: TTProducer;
+	host: 'localhost';
+	port: 8080;
+	yourself.
+
+mapReduce
+	input: { }
+	tasksNumber: 4
+	callbackDo: [ :result | result inspect ].
 
 "To remove from cluster"
 mapReduce ttClient shutdown.
@@ -145,19 +186,61 @@ mapReduce ttClient shutdown.
 ### Example: search in a dataset
 
 ```smalltalk
-mapReduce := (TTMapReduce	splitBlockForInput: [ :input :tasksNumber | 		(TTMapReduce splitArray: (input at: 'dataset') into: tasksNumber) collect: [ :subDataset |			{				'searched' -> (input at: 'searched').				'dataset' -> subDataset.			} asDictionary		].	]	mapBlockForSubInput: [ :input | 		| dataset searched |		dataset := input at: 'dataset'.		searched := input at: 'searched'.		dataset includes: searched	]	reduceBlockWithCallback: [ :results :callback |		callback value: (results includes: true)	])	ttClientClass: TTProducer;
-	host: 'localhost';	port: 8080;	yourself.dataset := { 'Ruby'. 'Python'. 'Java'. 'Smalltalk'. 'C'. 'Go' }.
+mapReduce := (TTMapReduce
+	splitBlockForInput: [ :input :tasksNumber | 
+		(TTMapReduce splitArray: (input at: 'dataset') into: tasksNumber) collect: [ :subDataset |
+			{
+				'searched' -> (input at: 'searched').
+				'dataset' -> subDataset.
+			} asDictionary
+		].
+	]
+	mapBlockForSubInput: [ :input | 
+		| dataset searched |
+		dataset := input at: 'dataset'.
+		searched := input at: 'searched'.
+		dataset includes: searched
+	]
+	reduceBlockWithCallback: [ :results :callback |
+		callback value: (results includes: true)
+	])
+	ttClientClass: TTProducer;
+	host: 'localhost';
+	port: 8080;
+	yourself.
 
-"Search the word 'SmallTalk' in the dataset"mapReduce	input: {		'searched' -> 'SmallTalk'.		'dataset' -> dataset	} asDictionary	tasksNumber: 3	callbackDo: [ :result | result inspect ].
+dataset := { 'Ruby'. 'Python'. 'Java'. 'Smalltalk'. 'C'. 'Go' }.
+
+"Search the word 'SmallTalk' in the dataset"
+mapReduce
+	input: {
+		'searched' -> 'SmallTalk'.
+		'dataset' -> dataset
+	} asDictionary
+	tasksNumber: 3
+	callbackDo: [ :result | result inspect ].
 
 "Search the word 'Smalltalk' in the dataset"
-mapReduce	input: {		'searched' -> 'Smalltalk'.		'dataset' -> dataset	} asDictionary	tasksNumber: 3	callbackDo: [ :result | result inspect ]."To remove from cluster"
-mapReduce ttClient shutdown.```
+mapReduce
+	input: {
+		'searched' -> 'Smalltalk'.
+		'dataset' -> dataset
+	} asDictionary
+	tasksNumber: 3
+	callbackDo: [ :result | result inspect ].
+
+"To remove from cluster"
+mapReduce ttClient shutdown.
+```
 
 ### Sample: sum of numbers from 1 to x
 
 ```smalltalk
-sampleCount := TTSampleCount new host: 'localhost'; port: 8080; yourself.sampleCount input: 100 tasksNumber: 4 callbackDo: [ :result | result inspect ].sampleCount input: 99 tasksNumber: 4 callbackDo: [ :result | result inspect ].sampleCount input: 10 tasksNumber: 4 callbackDo: [ :result | result inspect ].
+sampleCount := TTSampleCount new host: 'localhost'; port: 8080; yourself.
+
+sampleCount input: 100 tasksNumber: 4 callbackDo: [ :result | result inspect ].
+sampleCount input: 99 tasksNumber: 4 callbackDo: [ :result | result inspect ].
+sampleCount input: 10 tasksNumber: 4 callbackDo: [ :result | result inspect ].
 
 "To remove from cluster"
 sampleCount ttClient shutdown.
@@ -166,7 +249,9 @@ sampleCount ttClient shutdown.
 ### Sample: Prime Factorization
 
 ```smalltalk
-primeFactorization := TTSamplePrimeFactorization new host: 'localhost'; port: 8080; yourself.primeFactorization input: (1299821 * 1299827) tasksNumber: 2 callbackDo: [ :result | result inspect ].
+primeFactorization := TTSamplePrimeFactorization new host: 'localhost'; port: 8080; yourself.
+
+primeFactorization input: (1299821 * 1299827) tasksNumber: 2 callbackDo: [ :result | result inspect ].
 primeFactorization input: (143) tasksNumber: 2 callbackDo: [ :result | result inspect ].
 
 "To remove from cluster"
