@@ -18,25 +18,25 @@ Metacello new
 
 ### Manual setup
 
-Setup Vert.x verticle.
+Setup Teamtalk server (Vert.x verticle).
 
 ```
 $ docker run -p 8080:8080 plequen/teamtalk-server
 ```
 
-*[Image A]* Create a producer
+*[Pharo Image A]* Create a producer
 
 ```smalltalk
 producer := TTProducer host: 'localhost' port: 8080.
 ```
 
-*[Image B]* Create a worker
+*[Pharo Image B]* Create a worker
 
 ```smalltalk
 worker := TTWorker host: 'localhost' port: 8080.
 ```
 
-*[Image A]* Add a task to execute
+*[Pharo Image A]* Add a task to execute
 
 ```smalltalk
 task := TTTask
@@ -52,6 +52,53 @@ task := TTTask
 producer addTask: task.
 ```
 
+### Cluster setup
+
+- Install Teamtalk in a Pharo image Teamtalk.image.
+
+- Setup a teamtalk server on port 8080
+
+```
+export TEAMTALK_SERVER_PORT=8080
+ruby spawner.rb --create-server $TEAMTALK_SERVER_PORT
+```
+- Retrieve server IP: 
+
+```
+ifconfig | grep inet
+export TEAMTALK_SERVER_IP=.....
+```
+
+- Add consumers
+
+```
+ruby spawner.rb --create-consumer --pharo-image ./Teamtalk.image --server-host $TEAMTALK_SERVER_IP --server-port $TEAMTALK_SERVER_PORT
+ruby spawner.rb --create-consumer --pharo-image ./Teamtalk.image --server-host $TEAMTALK_SERVER_IP --server-port $TEAMTALK_SERVER_PORT
+ruby spawner.rb --create-consumer --pharo-image ./Teamtalk.image --server-host $TEAMTALK_SERVER_IP --server-port $TEAMTALK_SERVER_PORT
+```
+
+- Add a producer
+
+```
+ruby spawner.rb --create-producer --pharo-image ./Teamtalk.image --server-host $TEAMTALK_SERVER_IP --server-port $TEAMTALK_SERVER_PORT
+```
+- Connect to the producer via VNC (port 6001) and setup the producer
+
+```smalltalk
+producer := TTProducer host: 'IP' port: 8080.
+```
+
+- List all cluster nodes (current machine only)
+
+```
+ruby spawner.rb --list-all
+```
+
+- Remove all cluster nodes (current machine only)
+
+```
+ruby spawner.rb --remove-all
+```
 
 ## Examples
 
