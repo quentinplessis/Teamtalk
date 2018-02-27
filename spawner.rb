@@ -6,9 +6,10 @@ action = nil
 type = nil
 number = nil
 pharo_image = './Pharo.image'
-docker_image = 'pharo-vnc-supervisor'
+pharo_docker_image = 'mumez/pharo-vnc-supervisor'
 server_port = 8080
 server_host = 'localhost'
+teamtalk_server_docker_image = 'plequen/teamtalk-server'
 
 OptionParser.new do |opt|
     opt.on('--create-server VALUE',   'Create a Vert.x server on the given port.')           { |v| action = :create_server; server_port = v }
@@ -53,7 +54,7 @@ when :remove_all
 
 when :create_server
     server_image_name = "teamtalk-server-#{server_port}"
-    execute "(docker rm -f #{server_image_name} || true) && docker run -d -p #{server_port}:8080 --name #{server_image_name} plequen/teamtalk-server"
+    execute "(docker rm -f #{server_image_name} || true) && docker run -d -p #{server_port}:8080 --name #{server_image_name} #{teamtalk_server_docker_image}"
 
 when :remove_server
     server_image_name = "teamtalk-server-#{server_port}"
@@ -90,7 +91,7 @@ when :create
         "-v #{pharo_temp_images_directory}:/root/data",
         "-e PHARO_IMAGE=#{pharo_image_name}",
         (type == :consumer ? "-e PHARO_START_SCRIPT=\"TTWorker host: '#{server_host}' port: #{server_port}\"" : ""),
-        docker_image
+        pharo_docker_image
     ].join(" ")
 
     execute command
