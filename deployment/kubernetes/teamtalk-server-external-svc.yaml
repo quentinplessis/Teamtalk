@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: teamtalk-server-external-svc
+  labels:
+    app: teamtalk-server
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30100
+    protocol: TCP
+  selector:
+    app: teamtalk-server
