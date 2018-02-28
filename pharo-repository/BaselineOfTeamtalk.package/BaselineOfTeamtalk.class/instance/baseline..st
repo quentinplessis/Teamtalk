@@ -13,5 +13,4 @@ baseline: spec
 								repository: 'http://smalltalkhub.com/mc/MasashiUmezawa/VerStix/main' ].
 			spec
 				package: 'TT-Core' with: [ spec requires: #('VerStix') ];
-				package: 'TT-Garbage' with: [ spec requires: #('TT-Core') ];
 				package: 'TT-Samples' with: [ spec requires: #('TT-Core') ].]
